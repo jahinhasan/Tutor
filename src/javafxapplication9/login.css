@@ -1,0 +1,23 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+  -fx-background-color: white;
+  
+}
+
+.sidebar{
+    -fx-background-color: #6747CD;
+}
+
+.forgetBtn{
+    -fx-text-fill: #a3a3a3;
+}
+
+.forgetBtn:hover{
+    -fx-text-fill: #6747CD;
+    -fx-underline: true;
+}
+
+
