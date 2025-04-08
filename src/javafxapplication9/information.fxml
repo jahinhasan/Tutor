@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="666.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.InformafionController">
+   <children>
+      <RadioButton fx:id="teacherRadio" layoutX="314.0" layoutY="94.0" mnemonicParsing="false" text="Teacher" />
+      <Label alignment="CENTER" layoutX="282.0" layoutY="27.0" prefHeight="54.0" prefWidth="224.0" text="Information Bar" textFill="#3811ae" textOverrun="WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="studentRadio" layoutX="422.0" layoutY="94.0" mnemonicParsing="false" text="Student" />
+      <TextField fx:id="nameField" layoutX="336.0" layoutY="159.0" prefHeight="26.0" prefWidth="340.0" promptText="Full Name" />
+      <TextField fx:id="mobileField" layoutX="337.0" layoutY="210.0" prefHeight="26.0" prefWidth="340.0" promptText="Mobile Number" />
+      <JFXTextArea fx:id="addressArea" focusColor="#e1e1e1" layoutX="337.0" layoutY="262.0" prefHeight="84.0" prefWidth="340.0" text="Address" wrapText="true" />
+      <VBox fx:id="subjectBox" layoutX="27.0" layoutY="304.0" prefHeight="255.0" prefWidth="224.0">
+         <children>
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Bangla" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="English" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Biology" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Chemistry" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Physics" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Math" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Arts" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Humanistics" />
+         </children>
+      </VBox>
+      <TextField fx:id="educationField" layoutX="336.0" layoutY="384.0" prefHeight="26.0" prefWidth="340.0" promptText="Education" />
+      <TextArea fx:id="bioArea" layoutX="336.0" layoutY="452.0" prefHeight="84.0" prefWidth="346.0" promptText="Bio" />
+      <Button fx:id="saveButton" layoutX="631.0" layoutY="571.0" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+      <VBox layoutX="47.0" layoutY="100.0" prefHeight="189.0" prefWidth="152.0">
+         <children>
+            <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="150.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Shadow />
+               </effect>
+            </ImageView>
+            <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="150.0" prefWidth="150.0" scaleShape="false" text="Upload Picture" />
+         </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</AnchorPane>

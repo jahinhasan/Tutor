@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="mainFxmlClass" stylesheets="@login.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="javafxapplication9.RegisterController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="336.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.RegisterController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,9 +28,9 @@
       </Label>
       <TextField fx:id="emailField" alignment="CENTER" editable="true" layoutX="29.0" layoutY="300.0" prefHeight="26.0" prefWidth="258.0" promptText="User Name" />
       <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="29.0" layoutY="370.0" prefHeight="26.0" prefWidth="258.0" promptText="Password" />
-      <Button fx:id="loginButton" layoutX="88.0" layoutY="447.0" onAction="#handleRegister" prefWidth="150.0" text="Register" />
+      <Button fx:id="loginButton" layoutX="88.0" layoutY="447.0" onAction="#handleRegister" prefWidth="150.0" text="Next" />
       <TextField fx:id="emailField1" alignment="CENTER" editable="true" layoutX="29.0" layoutY="334.0" prefHeight="26.0" prefWidth="258.0" promptText="Gmail" />
       <PasswordField fx:id="passwordField1" alignment="CENTER" layoutX="29.0" layoutY="404.0" prefHeight="26.0" prefWidth="258.0" promptText="Confirm Password" />
-      <Button layoutX="88.0" layoutY="487.0" onAction="#handleBack"  mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Back" />
+      <Button layoutX="88.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="150.0" text="Back" />
    </children>
 </AnchorPane>

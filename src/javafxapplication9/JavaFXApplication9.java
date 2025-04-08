@@ -22,7 +22,7 @@ public class JavaFXApplication9 extends Application {
     
  @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Homescren.fxml"));
         
         Scene scene = new Scene(root);
         

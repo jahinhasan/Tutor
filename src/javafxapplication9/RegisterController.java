@@ -42,6 +42,7 @@ public class RegisterController {
     // SQLite Database File Path
     private static final String DB_PATH = "users.db";
     private static final String DB_URL = "jdbc:sqlite:" + DB_PATH;
+    private Parent informationRoot;
 
     // Constructor: Ensures database and table exist
     public RegisterController() {
@@ -129,16 +130,19 @@ public class RegisterController {
     }
 
     // ✅ Go to Login Page
-    private void goToLogin(ActionEvent event) {
-        try {
-            Parent loginRoot = FXMLLoader.load(getClass().getResource("login.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(loginRoot));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  private void goToLogin(ActionEvent event) {
+    try {
+        Parent loginRoot = FXMLLoader.load(getClass().getResource("information.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("User Information");
+        stage.setScene(new Scene(loginRoot));
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+        showAlert("Error", "Unable to load the information page.");
     }
+}
+
 
     // ✅ Show Alert Dialogs
     private void showAlert(String title, String message) {
