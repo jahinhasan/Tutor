@@ -6,14 +6,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.LoginController">
@@ -22,7 +18,7 @@
     </stylesheets>
     <children>
         <!-- Left Side Panel -->
-        <VBox alignment="CENTER" prefHeight="700.0" prefWidth="357.0" style="-fx-background-color: blue;">
+        <VBox alignment="CENTER" prefHeight="700.0" prefWidth="357.0" style="-fx-background-color: #5E7CA2;">
             <children>
                 <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -84,11 +80,7 @@
                   <Font name="Ebrima" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="signupLabel" 
-       alignment="CENTER" 
-       text="Signup" 
-       textFill="#2200ff" 
-       onMouseClicked="#handleSignupClick">
+            <Label fx:id="signupLabel" alignment="CENTER" onMouseClicked="#handleSignupClick" text="Signup" textFill="#2200ff">
    <font>
       <Font name="Ebrima" size="11.0" />
    </font>

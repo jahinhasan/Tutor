@@ -22,24 +22,24 @@ import javafx.stage.Stage;
 public class LoginController {
 
     @FXML
-    private TextField emailField;
+    private TextField emailField;  // Email input field
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordField;  // Password input field
 
     @FXML
-    private Button loginButton;
+    private Button loginButton;  // Login button
 
     @FXML
-    private Label signupLabel;
+    private Label signupLabel;  // Signup label to redirect to signup page
 
-    private static final String DB_URL = "jdbc:sqlite:users.db"; // SQLite Database
+    private static final String DB_URL = "jdbc:sqlite:home_tutor.db";  // SQLite Database file (adjust to your actual DB)
 
     /** ✅ Handle Login Button Click */
     @FXML
     private void handleLogin() {
-        String email = emailField.getText();
-        String password = passwordField.getText();
+        String email = emailField.getText();  // Get the email from the field
+        String password = passwordField.getText();  // Get the password from the field
 
         if (email.isEmpty() || password.isEmpty()) {
             showAlert("Login Failed", "Please enter email and password.");
@@ -48,7 +48,7 @@ public class LoginController {
 
         if (authenticateUser(email, password)) {
             showAlert("Login Successful", "Welcome, " + email);
-            loadHomeScreen(); // Load home screen after successful login
+            loadHomeScreen();  // Redirect to home screen after successful login
         } else {
             showAlert("Login Failed", "Invalid email or password.");
         }
@@ -56,16 +56,16 @@ public class LoginController {
 
     /** 🔗 Authenticate User from Database */
     private boolean authenticateUser(String email, String password) {
-        String query = "SELECT * FROM users WHERE email = ? AND password = ?";
-        
+        String query = "SELECT * FROM teacher_accounts WHERE gmail = ? AND password = ?";  // Updated query for teacher accounts
+
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(1, email);
-            stmt.setString(2, password);
+            stmt.setString(1, email);  // Set the Gmail
+            stmt.setString(2, password);  // Set the password
 
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // If there is a match, return true
+            return rs.next();  // If a match is found, return true
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,9 +77,9 @@ public class LoginController {
     /** 🚀 Redirect to Home Screen */
     private void loadHomeScreen() {
         try {
-            Parent homeRoot = FXMLLoader.load(getClass().getResource("Homescren.fxml"));
+            Parent homeRoot = FXMLLoader.load(getClass().getResource("Homescren.fxml"));  // Load home screen scene
             Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(new Scene(homeRoot));
+            stage.setScene(new Scene(homeRoot));  // Change scene to home screen
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -91,9 +91,9 @@ public class LoginController {
     @FXML
     private void handleSignupClick(MouseEvent event) {
         try {
-            Parent registerRoot = FXMLLoader.load(getClass().getResource("register.fxml"));
+            Parent registerRoot = FXMLLoader.load(getClass().getResource("register.fxml"));  // Load register scene
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(registerRoot));
+            stage.setScene(new Scene(registerRoot));  // Change scene to register screen
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

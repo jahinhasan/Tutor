@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="646.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.teacher_informationController">
+   <children>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="31.0" prefHeight="54.0" prefWidth="390.0" text="Teacher Information bar" textFill="#3811ae" textOverrun="WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" alignment="CENTER" layoutX="367.0" layoutY="367.0" prefHeight="26.0" prefWidth="340.0" promptText="Full Name" />
+      <TextField fx:id="mobileField" alignment="CENTER" layoutX="367.0" layoutY="405.0" prefHeight="26.0" prefWidth="340.0" promptText="Mobile Number" />
+      <JFXTextArea fx:id="addressArea" focusColor="#e1e1e1" layoutX="367.0" layoutY="442.0" prefHeight="84.0" prefWidth="340.0" text="Address" wrapText="true" />
+      <VBox fx:id="subjectBox" layoutX="16.0" layoutY="290.0" prefHeight="202.0" prefWidth="224.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="54.0" prefWidth="224.0" text="Subject Choice" textFill="#3811ae" textOverrun="WORD_ELLIPSIS" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Bangla" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="English" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Biology" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Chemistry" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Physics" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Math" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Arts" translateX="80.0" />
+            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Humanistics" translateX="80.0" />
+         </children>
+      </VBox>
+      <TextField fx:id="educationField" alignment="CENTER" layoutX="367.0" layoutY="535.0" prefHeight="26.0" prefWidth="340.0" promptText="Education" />
+      <TextArea fx:id="bioArea" layoutX="14.0" layoutY="535.0" prefHeight="84.0" prefWidth="346.0" promptText="Bio" />
+      <Button fx:id="saveButton" layoutX="631.0" layoutY="571.0" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+      <VBox layoutX="47.0" layoutY="100.0" prefHeight="189.0" prefWidth="152.0">
+         <children>
+            <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="150.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Shadow />
+               </effect>
+            </ImageView>
+            <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="150.0" prefWidth="150.0" scaleShape="false" text="Upload Picture" />
+         </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+      </VBox>
+      <TextField fx:id="gmailField" alignment="CENTER" layoutX="367.0" layoutY="168.0" prefHeight="26.0" prefWidth="340.0" promptText="Gmail" />
+      <TextField fx:id="userIdField" alignment="CENTER" layoutX="367.0" layoutY="219.0" prefHeight="26.0" prefWidth="340.0" promptText="UserId" />
+      <TextField fx:id="passwordField" alignment="CENTER" layoutX="368.0" layoutY="277.0" prefHeight="26.0" prefWidth="340.0" promptText="Password" />
+      <TextField fx:id="confirmPasswordField" alignment="CENTER" layoutX="368.0" layoutY="320.0" prefHeight="26.0" prefWidth="340.0" promptText="confirm Password" />
+   </children>
+</AnchorPane>
