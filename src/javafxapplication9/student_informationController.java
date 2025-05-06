@@ -32,9 +32,11 @@ public class student_informationController {
 
     private File selectedImageFile;
 
-    private static final String DB_URL = "jdbc:sqlite:home_tutor.db";
+    // ✅ Update your DB connection details here
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/home_tutor";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = ""; // or your MySQL password
 
-    // ✅ Upload and show image immediately
     @FXML
     private void handleUploadImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -50,7 +52,6 @@ public class student_informationController {
         }
     }
 
-    // ✅ Save student account and info
     @FXML
     private void handleSave(ActionEvent event) {
         String name = nameField.getText();
@@ -75,9 +76,7 @@ public class student_informationController {
             return;
         }
 
-        createTablesIfNotExists();
-
-        try (Connection conn = DriverManager.getConnection(DB_URL)) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             conn.setAutoCommit(false);
 
             // ✅ Insert into student_accounts
@@ -114,33 +113,6 @@ public class student_informationController {
         }
     }
 
-    // ✅ Create tables
-    private void createTablesIfNotExists() {
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             Statement stmt = conn.createStatement()) {
-
-            String createAccountTable = "CREATE TABLE IF NOT EXISTS student_accounts (" +
-                    "userId TEXT PRIMARY KEY," +
-                    "gmail TEXT NOT NULL," +
-                    "password TEXT NOT NULL" +
-                    ");";
-
-            String createInfoTable = "CREATE TABLE IF NOT EXISTS student_information (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "userId TEXT," +
-                    "name TEXT, mobile TEXT, address TEXT, education TEXT, bio TEXT, subjects TEXT, image BLOB," +
-                    "FOREIGN KEY(userId) REFERENCES student_accounts(userId)" +
-                    ");";
-
-            stmt.execute(createAccountTable);
-            stmt.execute(createInfoTable);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // ✅ Convert image to byte[]
     private byte[] imageToBytes(File file) throws IOException {
         BufferedImage bufferedImage = ImageIO.read(file);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -149,7 +121,6 @@ public class student_informationController {
         return baos.toByteArray();
     }
 
-    // ✅ Get selected subjects
     private List<String> getSelectedSubjects() {
         List<String> subjects = new ArrayList<>();
         subjectBox.getChildren().forEach(node -> {
@@ -163,7 +134,6 @@ public class student_informationController {
         return subjects;
     }
 
-    // ✅ Show alert box
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -172,7 +142,6 @@ public class student_informationController {
         alert.showAndWait();
     }
 
-    // ✅ Redirect to login page
     private void goToLogin(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));

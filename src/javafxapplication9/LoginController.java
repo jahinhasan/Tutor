@@ -2,6 +2,7 @@ package javafxapplication9;
 
 import java.io.IOException;
 import java.sql.*;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,8 +22,6 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private Button loginButton;
     @FXML private Label signupLabel;
-
-    private static final String DB_URL = "jdbc:sqlite:home_tutor.db";
 
     @FXML
     public void initialize() {
@@ -56,11 +55,11 @@ public class LoginController {
         }
     }
 
-    /** 🔐 Authenticate against the selected table */
+    /** 🔐 Authenticate against the selected table using MySQL */
     private boolean authenticateUser(String email, String password, String table) {
         String query = "SELECT * FROM " + table + " WHERE gmail = ? AND password = ?";
 
-        try (Connection conn = DriverManager.getConnection(DB_URL);
+        try (Connection conn = DBConnector.connect();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, email);

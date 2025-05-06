@@ -5,10 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.StudentDashboardController">
    <children>
@@ -24,6 +23,8 @@
       </Label>
       <Line endX="161.0" layoutX="439.0" layoutY="81.0" startX="-211.80001831054688" />
       <Button layoutX="726.0" layoutY="45.0" mnemonicParsing="false" text="Profile" textFill="#2f27c2" />
-      <FlowPane layoutX="227.0" layoutY="99.0" prefHeight="531.0" prefWidth="591.0" />
+     <VBox fx:id="teacherListContainer" spacing="10" prefWidth="600" prefHeight="400" />
+
+
    </children>
 </AnchorPane>

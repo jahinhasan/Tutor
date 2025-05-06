@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.layout.VBox;
 
+
 public class teacher_informationController {
 
     @FXML private TextField nameField, mobileField, educationField, gmailField, userIdField, passwordField, confirmPasswordField;
@@ -31,10 +32,12 @@ public class teacher_informationController {
     @FXML private Button uploadButton, saveButton;
 
     private File selectedImageFile;
+    
+    // ✅ Update your DB connection details here
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/home_tutor";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "";
 
-    private static final String DB_URL = "jdbc:sqlite:home_tutor.db";
-
-    // ✅ Upload and show image immediately
     @FXML
     private void handleUploadImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -50,7 +53,6 @@ public class teacher_informationController {
         }
     }
 
-    // ✅ Save teacher account and info
     @FXML
     private void handleSave(ActionEvent event) {
         String name = nameField.getText();
@@ -77,10 +79,9 @@ public class teacher_informationController {
 
         createTablesIfNotExists();
 
-        try (Connection conn = DriverManager.getConnection(DB_URL)) {
+        try (Connection conn = DBConnector.getConnection()) {
             conn.setAutoCommit(false);
 
-            // ✅ Insert into teacher_accounts
             String insertAccountSQL = "INSERT INTO teacher_accounts(userId, gmail, password) VALUES (?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(insertAccountSQL)) {
                 pstmt.setString(1, userId);
@@ -89,7 +90,6 @@ public class teacher_informationController {
                 pstmt.executeUpdate();
             }
 
-            // ✅ Insert into teacher_information
             String insertInfoSQL = "INSERT INTO teacher_information(userId, name, mobile, address, education, bio, subjects, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(insertInfoSQL)) {
                 pstmt.setString(1, userId);
@@ -114,33 +114,31 @@ public class teacher_informationController {
         }
     }
 
-    // ✅ Create tables
     private void createTablesIfNotExists() {
-        try (Connection conn = DriverManager.getConnection(DB_URL);
+        try (Connection conn = DBConnector.getConnection();
              Statement stmt = conn.createStatement()) {
 
             String createAccountTable = "CREATE TABLE IF NOT EXISTS teacher_accounts (" +
-                    "userId TEXT PRIMARY KEY," +
-                    "gmail TEXT NOT NULL," +
-                    "password TEXT NOT NULL" +
-                    ");";
+                    "userId VARCHAR(255) PRIMARY KEY," +
+                    "gmail VARCHAR(255) NOT NULL," +
+                    "password VARCHAR(255) NOT NULL" +
+                    ") ENGINE=InnoDB;";
 
             String createInfoTable = "CREATE TABLE IF NOT EXISTS teacher_information (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "userId TEXT," +
-                    "name TEXT, mobile TEXT, address TEXT, education TEXT, bio TEXT, subjects TEXT, image BLOB," +
-                    "FOREIGN KEY(userId) REFERENCES teacher_accounts(userId)" +
-                    ");";
+                    "id INT AUTO_INCREMENT PRIMARY KEY," +
+                    "userId VARCHAR(255)," +
+                    "name VARCHAR(255), mobile VARCHAR(50), address TEXT, education VARCHAR(255), bio TEXT, subjects TEXT, image LONGBLOB," +
+                    "FOREIGN KEY(userId) REFERENCES teacher_accounts(userId) ON DELETE CASCADE" +
+                    ") ENGINE=InnoDB;";
 
-            stmt.execute(createAccountTable);
-            stmt.execute(createInfoTable);
+            stmt.executeUpdate(createAccountTable);
+            stmt.executeUpdate(createInfoTable);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // ✅ Convert image to byte[]
     private byte[] imageToBytes(File file) throws IOException {
         BufferedImage bufferedImage = ImageIO.read(file);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -149,7 +147,6 @@ public class teacher_informationController {
         return baos.toByteArray();
     }
 
-    // ✅ Get selected subjects
     private List<String> getSelectedSubjects() {
         List<String> subjects = new ArrayList<>();
         subjectBox.getChildren().forEach(node -> {
@@ -163,7 +160,6 @@ public class teacher_informationController {
         return subjects;
     }
 
-    // ✅ Show alert box
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -172,7 +168,6 @@ public class teacher_informationController {
         alert.showAndWait();
     }
 
-    // ✅ Redirect to login page
     private void goToLogin(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
