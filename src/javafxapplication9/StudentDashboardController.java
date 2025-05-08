@@ -1,77 +1,68 @@
 package javafxapplication9;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.net.URL;
 import java.sql.*;
-import java.util.ResourceBundle;
 
-public class StudentDashboardController implements Initializable {
+public class StudentDashboardController {
 
     @FXML
-    private VBox teacherListContainer;
+    private TableView<Teacher> teacherTable;
+    @FXML
+    private TableColumn<Teacher, Integer> addressColumn1;  // for ID
+    @FXML
+    private TableColumn<Teacher, String> nameColumn;
+    @FXML
+    private TableColumn<Teacher, String> addressColumn;
+    @FXML
+    private TableColumn<Teacher, String> subjectColumn;
+    @FXML
+    private TableColumn<Teacher, String> mobileColumn;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        loadTeacherAdvertisements();
-    }
+    private ObservableList<Teacher> teacherList = FXCollections.observableArrayList();
 
-    public void loadTeacherAdvertisements() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+ public void initialize() {
+    System.out.println("Initializing student dashboard...");
+    addressColumn1.setCellValueFactory(new PropertyValueFactory<>("id"));
+    nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+    addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+    subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+    mobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
 
-        try {
-            // Connect to SQLite database
-            conn = DriverManager.getConnection("jdbc:sqlite:home_tutor.db");
+    loadTeachersFromDatabase();
+}
 
-            // Query to fetch teacher details (columns must exist in your table)
-            String sql = "SELECT name, contact, subjects, education, bio FROM teacher_information";
-            stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery();
 
-            // Clear previous list
-            teacherListContainer.getChildren().clear();
+   private void loadTeachersFromDatabase() {
+    System.out.println("Loading teachers from database...");
+    String query = "SELECT id, name, address, selected_subjects, contact FROM teacher_information";
 
-            // Loop through result set and create display for each teacher
-            while (rs.next()) {
-                String name = rs.getString("name");
-                String contact = rs.getString("contact");
-                String subjects = rs.getString("subjects");
-                String education = rs.getString("education");
-                String bio = rs.getString("bio");
+    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/home_tutor", "root", "");
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(query)) {
 
-                // Create a UI block for each teacher (you can style this better)
-                VBox teacherBox = new VBox();
-                teacherBox.setSpacing(5);
-                teacherBox.setStyle("-fx-border-color: #ccc; -fx-padding: 10; -fx-background-color: #f9f9f9; -fx-border-radius: 5; -fx-background-radius: 5;");
-
-                Label nameLabel = new Label("Name: " + name);
-                Label contactLabel = new Label("Contact: " + contact);
-                Label subjectsLabel = new Label("Subjects: " + subjects);
-                Label educationLabel = new Label("Education: " + education);
-                Text bioText = new Text("Bio: " + bio);
-
-                teacherBox.getChildren().addAll(nameLabel, contactLabel, subjectsLabel, educationLabel, bioText);
-
-                teacherListContainer.getChildren().add(teacherBox);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        while (rs.next()) {
+            System.out.println("Found teacher: " + rs.getString("name"));
+            Teacher teacher = new Teacher(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("address"),
+                    rs.getString("selected_subjects"),
+                    rs.getString("contact")
+            );
+            teacherList.add(teacher);
         }
+
+        teacherTable.setItems(teacherList);
+        System.out.println("Total teachers loaded: " + teacherList.size());
+
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
+
 }
