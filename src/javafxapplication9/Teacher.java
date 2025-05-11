@@ -3,20 +3,20 @@ public class Teacher {
     private int id;
     private String name;
     private String address;
-    private String subject;
+    private String subjects;
     private String mobile;
 
-    public Teacher(int id, String name, String address, String subject, String mobile) {
+    public Teacher(int id, String name, String address, String subjects, String mobile) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.subject = subject;
+        this.subjects = subjects;
         this.mobile = mobile;
     }
 
     public int getId() { return id; }
     public String getName() { return name; }
     public String getAddress() { return address; }
-    public String getSubject() { return subject; }
+    public String getSubjects() { return subjects; }
     public String getMobile() { return mobile; }
 }

@@ -30,7 +30,7 @@ public class StudentDashboardController {
     addressColumn1.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
     addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-    subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+    subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subjects"));
     mobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
 
     loadTeachersFromDatabase();
@@ -39,7 +39,7 @@ public class StudentDashboardController {
 
    private void loadTeachersFromDatabase() {
     System.out.println("Loading teachers from database...");
-    String query = "SELECT id, name, address, selected_subjects, contact FROM teacher_information";
+    String query = "SELECT id, name, address, subjects, mobile FROM teacher_information";
 
     try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/home_tutor", "root", "");
          Statement stmt = conn.createStatement();
@@ -51,8 +51,8 @@ public class StudentDashboardController {
                     rs.getInt("id"),
                     rs.getString("name"),
                     rs.getString("address"),
-                    rs.getString("selected_subjects"),
-                    rs.getString("contact")
+                    rs.getString("subjects"),
+                    rs.getString("mobile")
             );
             teacherList.add(teacher);
         }
