@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.AdminDashboardController">
+   <children>
+      <Label layoutX="280.0" layoutY="20.0" text="Admin Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="28.0" />
+         </font>
+      </Label>
+
+      <TabPane layoutX="25.0" layoutY="70.0" prefHeight="450.0" prefWidth="800.0" fx:id="tabPane">
+         <tabs>
+            <!-- Teacher Tab -->
+            <Tab text="Teachers">
+               <AnchorPane>
+                  <TableView fx:id="teacherTable" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="780.0">
+                     <columns>
+                        <TableColumn fx:id="teacherIdCol" text="ID" prefWidth="50.0"/>
+                        <TableColumn fx:id="teacherNameCol" text="Name" prefWidth="150.0"/>
+                        <TableColumn fx:id="teacherAddressCol" text="Address" prefWidth="150.0"/>
+                        <TableColumn fx:id="teacherSubjectCol" text="Subjects" prefWidth="150.0"/>
+                        <TableColumn fx:id="teacherMobileCol" text="Mobile" prefWidth="150.0"/>
+                     </columns>
+                  </TableView>
+                  <Button fx:id="editTeacherBtn" layoutX="600.0" layoutY="360.0" mnemonicParsing="false" text="Edit Selected Teacher" onAction="#handleEditTeacher"/>
+                  <Button fx:id="deleteTeacherBtn" layoutX="430.0" layoutY="360.0" mnemonicParsing="false" text="Delete Selected Teacher" onAction="#handleDeleteTeacher"/>
+               </AnchorPane>
+            </Tab>
+
+            <!-- Student Tab -->
+            <Tab text="Students">
+               <AnchorPane>
+                  <TableView fx:id="studentTable" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="780.0">
+                     <columns>
+                        <TableColumn fx:id="studentIdCol" text="ID" prefWidth="50.0"/>
+                        <TableColumn fx:id="studentNameCol" text="Name" prefWidth="150.0"/>
+                        <TableColumn fx:id="studentAddressCol" text="Address" prefWidth="150.0"/>
+                        <TableColumn fx:id="studentMobileCol" text="Mobile" prefWidth="150.0"/>
+                     </columns>
+                  </TableView>
+                  <Button fx:id="editStudentBtn" layoutX="600.0" layoutY="360.0" mnemonicParsing="false" text="Edit Selected Student" onAction="#handleEditStudent"/>
+                  <Button fx:id="deleteStudentBtn" layoutX="430.0" layoutY="360.0" mnemonicParsing="false" text="Delete Selected Student" onAction="#handleDeleteStudent"/>
+               </AnchorPane>
+            </Tab>
+         </tabs>
+      </TabPane>
+
+      <Button layoutX="700.0" layoutY="540.0" mnemonicParsing="false" text="Logout" onAction="#handleLogout"/>
+   </children>
+</AnchorPane>

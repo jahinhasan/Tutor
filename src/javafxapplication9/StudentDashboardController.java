@@ -1,4 +1,5 @@
 package javafxapplication9;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -7,6 +8,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class StudentDashboardController {
 
@@ -36,6 +43,16 @@ public class StudentDashboardController {
     loadTeachersFromDatabase();
 }
 
+     @FXML
+    private void handleProfileButtonAction(ActionEvent event) throws IOException {
+        Parent profileRoot = FXMLLoader.load(getClass().getResource("StudentProfile.fxml"));
+        Scene profileScene = new Scene(profileRoot);
+
+        // Get current stage and set new scene
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(profileScene);
+        window.show();
+    }
 
    private void loadTeachersFromDatabase() {
     System.out.println("Loading teachers from database...");

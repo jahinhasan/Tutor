@@ -17,13 +17,13 @@
             <Image url="@../icone/ca5fa97f-7696-414b-bc87-9b5205b27575.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="245.0" layoutY="34.0" prefHeight="47.0" prefWidth="362.0" text="STUDENT DESHBOARD">
+      <Label layoutX="245.0" layoutY="34.0" prefHeight="47.0" prefWidth="362.0" text="Teacher's DESHBOARD">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
       </Label>
       <Line endX="161.0" layoutX="439.0" layoutY="81.0" startX="-211.80001831054688" />
-      <Button layoutX="726.0" layoutY="45.0" mnemonicParsing="false" text="Profile" textFill="#2f27c2" onAction="#handleProfileButtonAction" />
+      <Button layoutX="726.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" text="Profile" textFill="#2f27c2" />
       <TableView fx:id="teacherTable" layoutX="-1.0" layoutY="145.0" prefHeight="493.0" prefWidth="822.0">
     <columns>
             <TableColumn fx:id="addressColumn1" prefWidth="43.20004427433014" text="id" />

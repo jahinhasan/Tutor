@@ -16,15 +16,15 @@
 
     <!-- Name -->
     <Label layoutX="200" layoutY="70" style="-fx-font-weight: bold;" text="Name:" />
-    <Label fx:id="lblName" layoutX="300" layoutY="70" prefHeight="18.0" prefWidth="240.0" />
+    <Label fx:id="lblName" layoutX="300" layoutY="70" prefHeight="18.0" prefWidth="230.0" />
 
     <!-- Email -->
     <Label layoutX="200" layoutY="110" style="-fx-font-weight: bold;" text="Email:" />
-    <Label fx:id="lblEmail" layoutX="300" layoutY="110" prefHeight="18.0" prefWidth="240.0" />
+    <Label fx:id="lblEmail" layoutX="300" layoutY="110" prefHeight="18.0" prefWidth="230.0" />
 
     <!-- Contact -->
     <Label layoutX="200" layoutY="150" style="-fx-font-weight: bold;" text="Contact:" />
-    <Label fx:id="lblContact" layoutX="300" layoutY="150" prefHeight="18.0" prefWidth="240.0" />
+    <Label fx:id="lblContact" layoutX="300" layoutY="150" prefHeight="18.0" prefWidth="230.0" />
 
     <!-- Address -->
     <Label layoutX="200" layoutY="190" style="-fx-font-weight: bold;" text="Address:" />
@@ -32,11 +32,11 @@
 
     <!-- Selected Subjects -->
     <Label layoutX="200" layoutY="270" style="-fx-font-weight: bold;" text="Selected Subjects:" />
-    <Label fx:id="lblSubjects" layoutX="350" layoutY="270" prefHeight="18.0" prefWidth="240.0" wrapText="true" />
+    <Label fx:id="lblSubjects" layoutX="350" layoutY="270" prefHeight="18.0" prefWidth="230.0" wrapText="true" />
 
     <!-- Education -->
     <Label layoutX="200" layoutY="310" style="-fx-font-weight: bold;" text="Education:" />
-    <Label fx:id="lblEducation" layoutX="300" layoutY="310" prefHeight="18.0" prefWidth="240.0" wrapText="true" />
+    <Label fx:id="lblEducation" layoutX="300" layoutY="310" prefHeight="18.0" prefWidth="230.0" wrapText="true" />
 
     <!-- Bio -->
     <Label layoutX="200" layoutY="350" style="-fx-font-weight: bold;" text="Bio:" />

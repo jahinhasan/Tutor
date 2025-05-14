@@ -87,6 +87,19 @@ public class LoginController {
             showAlert("Error", "Unable to load the dashboard.");
         }
     }
+@FXML
+private void handleAdminLogin() {
+    String email = emailField.getText().trim();
+    String password = passwordField.getText().trim();
+
+    // Hardcoded admin credentials
+    if (email.equals("admin@tutor.com") && password.equals("admin123")) {
+        showAlert("Login Successful", "Welcome Admin");
+        loadDashboard("AdminDashboard.fxml");
+    } else {
+        showAlert("Login Failed", "Invalid admin credentials.");
+    }
+}
 
     /** 🧭 Redirect to Signup Page */
     @FXML
