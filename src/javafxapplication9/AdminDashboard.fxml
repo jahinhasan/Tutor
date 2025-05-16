@@ -1,54 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.AdminDashboardController">
-   <children>
-      <Label layoutX="280.0" layoutY="20.0" text="Admin Dashboard">
-         <font>
-            <Font name="System Bold Italic" size="28.0" />
-         </font>
-      </Label>
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.AdminDashboardController">
+    <children>
+        <Label layoutX="320.0" layoutY="20.0" text="Admin Dashboard">
+            <font>
+                <Font name="System Bold Italic" size="28.0" />
+            </font>
+        </Label>
 
-      <TabPane layoutX="25.0" layoutY="70.0" prefHeight="450.0" prefWidth="800.0" fx:id="tabPane">
-         <tabs>
-            <!-- Teacher Tab -->
-            <Tab text="Teachers">
-               <AnchorPane>
-                  <TableView fx:id="teacherTable" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="780.0">
-                     <columns>
-                        <TableColumn fx:id="teacherIdCol" text="ID" prefWidth="50.0"/>
-                        <TableColumn fx:id="teacherNameCol" text="Name" prefWidth="150.0"/>
-                        <TableColumn fx:id="teacherAddressCol" text="Address" prefWidth="150.0"/>
-                        <TableColumn fx:id="teacherSubjectCol" text="Subjects" prefWidth="150.0"/>
-                        <TableColumn fx:id="teacherMobileCol" text="Mobile" prefWidth="150.0"/>
-                     </columns>
-                  </TableView>
-                  <Button fx:id="editTeacherBtn" layoutX="600.0" layoutY="360.0" mnemonicParsing="false" text="Edit Selected Teacher" onAction="#handleEditTeacher"/>
-                  <Button fx:id="deleteTeacherBtn" layoutX="430.0" layoutY="360.0" mnemonicParsing="false" text="Delete Selected Teacher" onAction="#handleDeleteTeacher"/>
-               </AnchorPane>
-            </Tab>
+        <TabPane fx:id="tabPane" layoutX="25.0" layoutY="70.0" prefHeight="450.0" prefWidth="850.0">
+            <tabs>
+                <!-- Teacher Tab -->
+                <Tab text="Teachers">
+                    <AnchorPane>
+                        <TableView fx:id="teacherTable" layoutX="-1.0" prefHeight="350.0" prefWidth="850.0">
+                            <columns>
+                                <TableColumn fx:id="teacherNameCol" prefWidth="130.39998817443848" text="Name" />
+                                <TableColumn fx:id="teacherMobileCol" prefWidth="117.60003662109375" text="Mobile" />
+                                <TableColumn fx:id="teacherAddressCol" prefWidth="145.5999755859375" text="Address" />
+                                <TableColumn fx:id="teacherBioCol" prefWidth="126.39999389648438" text="Bio" />
+                                <TableColumn fx:id="teacherEducationCol" prefWidth="158.39996337890625" text="Education" />
+                                <TableColumn fx:id="teacherSubjectCol" prefWidth="171.199951171875" text="Subjects" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="editTeacherBtn" layoutX="620.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleEditTeacher" text="Edit Selected Teacher" />
+                        <Button fx:id="deleteTeacherBtn" layoutX="450.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleDeleteTeacher" text="Delete Selected Teacher" />
+                    </AnchorPane>
+                </Tab>
 
-            <!-- Student Tab -->
-            <Tab text="Students">
-               <AnchorPane>
-                  <TableView fx:id="studentTable" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="780.0">
-                     <columns>
-                        <TableColumn fx:id="studentIdCol" text="ID" prefWidth="50.0"/>
-                        <TableColumn fx:id="studentNameCol" text="Name" prefWidth="150.0"/>
-                        <TableColumn fx:id="studentAddressCol" text="Address" prefWidth="150.0"/>
-                        <TableColumn fx:id="studentMobileCol" text="Mobile" prefWidth="150.0"/>
-                     </columns>
-                  </TableView>
-                  <Button fx:id="editStudentBtn" layoutX="600.0" layoutY="360.0" mnemonicParsing="false" text="Edit Selected Student" onAction="#handleEditStudent"/>
-                  <Button fx:id="deleteStudentBtn" layoutX="430.0" layoutY="360.0" mnemonicParsing="false" text="Delete Selected Student" onAction="#handleDeleteStudent"/>
-               </AnchorPane>
-            </Tab>
-         </tabs>
-      </TabPane>
+                <!-- Student Tab -->
+                <Tab text="Students">
+                    <AnchorPane>
+                        <TableView fx:id="studentTable" layoutX="-1.0" prefHeight="350.0" prefWidth="850.0">
+                            <columns>
+                                <TableColumn fx:id="studentNameCol" prefWidth="151.20001411437988" text="Name" />
+                                <TableColumn fx:id="studentMobileCol" prefWidth="127.19998168945312" text="Mobile" />
+                                <TableColumn fx:id="studentAddressCol" prefWidth="112.0" text="Address" />
+                                <TableColumn fx:id="studentBioCol" prefWidth="122.40005493164062" text="Bio" />
+                                <TableColumn fx:id="studentEducationCol" prefWidth="147.99993896484375" text="Education" />
+                                <TableColumn fx:id="studentSubjectCol" prefWidth="191.199951171875" text="Subjects" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="editStudentBtn" layoutX="620.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleEditStudent" text="Edit Selected Student" />
+                        <Button fx:id="deleteStudentBtn" layoutX="450.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleDeleteStudent" text="Delete Selected Student" />
+                    </AnchorPane>
+                </Tab>
+            </tabs>
+        </TabPane>
 
-      <Button layoutX="700.0" layoutY="540.0" mnemonicParsing="false" text="Logout" onAction="#handleLogout"/>
-   </children>
+        <Button layoutX="770.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+    </children>
 </AnchorPane>
