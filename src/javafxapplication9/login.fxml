@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ToggleGroup?>
+
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.LoginController">
     <stylesheets>
@@ -61,13 +63,13 @@
                         <Font name="Ebrima" size="11.0" />
                     </font>
                 </Label>
-       <fx:define>
-        <ToggleGroup fx:id="userTypeToggleGroup" />
-    </fx:define>
+<fx:define>
+    <ToggleGroup fx:id="userTypeToggleGroup"/>
+</fx:define>
 
-    <!-- Correct usage in RadioButtons -->
-    <RadioButton fx:id="teacherRadio" layoutX="50" layoutY="50" text="Teacher" toggleGroup="${userTypeToggleGroup}" />
-    <RadioButton fx:id="studentRadio" layoutX="50" layoutY="80" text="Student" toggleGroup="${userTypeToggleGroup}" />
+<RadioButton fx:id="teacherRadio" text="Teacher" toggleGroup="$userTypeToggleGroup" />
+<RadioButton fx:id="studentRadio" text="Student" toggleGroup="$userTypeToggleGroup" />
+
     
 
 

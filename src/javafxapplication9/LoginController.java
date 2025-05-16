@@ -25,7 +25,10 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        teacherRadio.setSelected(true); // Default selection
+       if (teacherRadio != null) {
+    teacherRadio.setSelected(true);
+}
+ // Default selection
     }
 
     /** ✅ Handle Login Button Click */
