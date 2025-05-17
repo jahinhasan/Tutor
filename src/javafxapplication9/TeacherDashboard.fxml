@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="594.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.StudentDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="594.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication9.TeacherDashboardController">
    <children>
       <ImageView fitHeight="639.0" fitWidth="832.0" layoutX="-11.0" opacity="0.21" pickOnBounds="true">
          <image>
@@ -24,9 +24,9 @@
       </Label>
       <Line endX="161.0" layoutX="439.0" layoutY="81.0" startX="-211.80001831054688" />
       <Button layoutX="726.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" text="Profile" textFill="#2f27c2" />
-      <TableView fx:id="teacherTable" layoutX="-1.0" layoutY="145.0" prefHeight="493.0" prefWidth="822.0">
+      <TableView  fx:id="studentTable" layoutX="-1.0" layoutY="145.0" prefHeight="493.0" prefWidth="822.0">
     <columns>
-            <TableColumn fx:id="addressColumn1" prefWidth="43.20004427433014" text="id" />
+            <TableColumn fx:id="idColumn" prefWidth="43.20004427433014" text="id" />
         <TableColumn fx:id="nameColumn" prefWidth="200.5999984741211" text="Name" />
         <TableColumn fx:id="addressColumn" prefWidth="208.0" text="Address" />
         <TableColumn fx:id="subjectColumn" prefWidth="200.40005493164062" text="Subject" />

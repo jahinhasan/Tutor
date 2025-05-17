@@ -50,30 +50,34 @@ public class TeacherDashboardController {
         loadStudentsFromDatabase();
     }
 
-    private void loadStudentsFromDatabase() {
-        System.out.println("Loading students from database...");
-        String query = "SELECT id, name, address, selected_subjects AS subjects, contact AS mobile FROM student_information";
+   private void loadStudentsFromDatabase() {
+    System.out.println("Loading students from database...");
+    String query = "SELECT id, name, address,subjects, mobile FROM student_information";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/home_tutor", "root", "");
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/home_tutor", "root", "");
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(query)) {
 
-            while (rs.next()) {
-                Student student = new Student(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("address"),
-                        rs.getString("subjects"));
-                studentList.add(student);
-            }
+        studentList.clear(); // ← Clear old data
 
-            studentTable.setItems(studentList);
-            System.out.println("Total students loaded: " + studentList.size());
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        while (rs.next()) {
+            Student student = new Student(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("address"),
+                    rs.getString("subjects"),
+                    rs.getString("mobile"));  // ← Now added
+            studentList.add(student);
         }
+
+        studentTable.setItems(studentList);
+        System.out.println("Total students loaded: " + studentList.size());
+
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
+
 
     @FXML
     private void handleProfileButtonAction(ActionEvent event) throws IOException {

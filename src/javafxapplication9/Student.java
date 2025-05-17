@@ -7,13 +7,18 @@ public class Student {
     private String subjects;
     private String mobile;
 
-    public Student(int id, String name, String address, String subjects) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.subjects = subjects;
-        this.mobile = mobile;
-    }
+ 
+
+public Student(int id, String name, String address, String subjects, String mobile) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+    this.subjects = subjects;
+    this.mobile = mobile;
+}
+
+// + getters for all
+
 
     // Getters for PropertyValueFactory
     public int getId() { return id; }
